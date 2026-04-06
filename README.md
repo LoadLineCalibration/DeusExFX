@@ -10,7 +10,8 @@ Now, such a tool finally exists.
 You can download it and use it to edit your models.
 
 ## Program interface
-<img width="899" height="968" alt="Adam Jensen model from the DeusEx: Machine God mod" src="https://github.com/user-attachments/assets/e82c2ccd-1686-431f-bd29-6d40a3be7206" />
+<p align="center"><img width="899" height="968" alt="Adam Jensen model from the DeusEx: Machine God mod" src="https://github.com/user-attachments/assets/e82c2ccd-1686-431f-bd29-6d40a3be7206" /></p>
+<p align="center">Adam Jensen model from the DeusEx: Machine God mod</p>
 
 
 
