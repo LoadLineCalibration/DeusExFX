@@ -1,7 +1,5 @@
 # DeusExFX
 
-# NOTE: WIP! No download yet!
-
 For quite a long time, there has been a tool called **UnrealFX** for working with models in the Unreal `.3d` format. It allows editing polyflags.
 
 However, there has never been a proper equivalent for the **Deus Ex `.3d` format**, which differs from the Unreal version by having higher precision.
