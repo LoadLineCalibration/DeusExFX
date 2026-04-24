@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.013,C:\LANG\DelphiProjects\Unit1.pas=C:\LANG\DelphiProjects\DeusExFX\uFrmMain.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,=C:\LANG\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.754,C:\LANG\DelphiProjects\DeusExFX\uFrmAbout.pas=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.646,=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.250,=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.315,C:\LANG\DelphiProjects\Project1.dproj=C:\LANG\DelphiProjects\DeusExFX\DeusExFX.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.925,C:\LANG\DelphiProjects\DeusExFX\GradientMainMenuPainter.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.287,=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DTriangleList.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.020,C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DFlagsEditor_.pas=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DFlagsEditor.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.680,C:\LANG\DelphiProjects\DeusExFX\RuntimeMainMenuClone.pas=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.196,C:\LANG\DelphiProjects\DeusExFX\uFrmControls.pas=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.013,C:\LANG\DelphiProjects\Unit1.dfm=C:\LANG\DelphiProjects\DeusExFX\uFrmMain.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.570,=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.071,=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DFlagsEditor.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.754,C:\LANG\DelphiProjects\DeusExFX\uFrmAbout.dfm=C:\LANG\DelphiProjects\DeusExFX\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.196,C:\LANG\DelphiProjects\DeusExFX\uFrmControls.dfm=C:\LANG\DelphiProjects\DeusExFX\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.492,C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DInfo.pas=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DModel.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.187,=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DInfo.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.490,C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DFlagsEditor.pas=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DFlagsEditor_.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.040,=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.421,=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.525,=C:\LANG\DelphiProjects\DeusExFX\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.757,C:\LANG\DelphiProjects\DeusExFX\Unit1.pas=C:\LANG\DelphiProjects\DeusExFX\DXUnreal3DView.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.382,C:\LANG\DelphiProjects\DeusExFX\Unit1.pas=C:\LANG\DelphiProjects\DeusExFX\ClassicMenuPainter.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.739,C:\LANG\DelphiProjects\DeusExFX\Unit1.pas=C:\LANG\DelphiProjects\DeusExFX\GradientMainMenuPainter.pas</Transaction>
+  </Transactions>
+</BorlandProject>
