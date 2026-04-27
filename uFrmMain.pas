@@ -323,11 +323,15 @@ begin
     DXDefaultMeshViewerColors.SelectedLineColor:= $007DA8FF; // Края выделенного полигона
     DXDefaultMeshViewerColors.ActiveSelectedLineColor:= clRed; // Края активного выделенного полигона
 
+    DXDefaultMeshViewerColors.BackgroundTopColor := clGray;
+    DXDefaultMeshViewerColors.BackgroundBottomColor := clBlack;
+
     viewer := TDXMeshViewer.Create(pnlViewport);
     viewer.Parent := pnlViewport;
     viewer.Align := alClient;
     viewer.PopupMenu := ViewportPopup;
     viewer.AxisFontHeight := 10;
+    viewer.GradientBackground := True;
 
     flagsEditor := TDXMeshFlagsEditor.Create();
     flagsEditor.Attach(model, viewer);

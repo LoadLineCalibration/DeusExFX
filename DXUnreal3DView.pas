@@ -38,6 +38,8 @@ type
     );
     TDXMeshViewerColors = record
         BackgroundColor: TColor;
+        BackgroundTopColor: TColor;
+        BackgroundBottomColor: TColor;
         SolidColorNormal: TColor;
         SolidColorTwoSided: TColor;
         SolidColorInvisible: TColor;
@@ -97,6 +99,7 @@ type
         selectedTrianglesValue: TArray<Boolean>;
         selectedCountValue: Integer;
         colorsValue: TDXMeshViewerColors;
+        bGradientBackgroundValue: Boolean;
         bOpenGLReadyValue: Boolean;
         displayModeValue: TDXMeshDisplayMode;
         bWireframeValue: Boolean;
@@ -151,6 +154,7 @@ type
         procedure SetupViewTransform();
         procedure DrawModel();
         procedure DrawModelForPicking();
+        procedure DrawViewportBackground();
         procedure DrawSelectedTriangles();
         procedure DrawBoundingBox();
         procedure DrawBoundingSphere();
@@ -174,6 +178,7 @@ type
         procedure SetShadeAmbient(const AValue: Single);
         procedure SetShadeDiffuse(const AValue: Single);
         procedure SetColors(const AValue: TDXMeshViewerColors);
+        procedure SetGradientBackground(const bValue: Boolean);
         procedure SetSelectedTriangleIndex(AValue: Integer);
         procedure SetShowBoundingBox(const bValue: Boolean);
         procedure SetShowBoundingBoxVertexLabels(const bValue: Boolean);
@@ -264,6 +269,7 @@ type
         property ShadeAmbient: Single read shadeAmbientValue write SetShadeAmbient;
         property ShadeDiffuse: Single read shadeDiffuseValue write SetShadeDiffuse;
         property Colors: TDXMeshViewerColors read colorsValue write SetColors;
+        property GradientBackground: Boolean read bGradientBackgroundValue write SetGradientBackground;
         property SelectedTriangleIndex: Integer read selectedTriangleIndexValue write SetSelectedTriangleIndex;
         property SelectionCount: Integer read GetSelectionCount;
         property TriangleSelected[Index: Integer]: Boolean read GetTriangleSelected write SetTriangleSelected;
@@ -338,6 +344,16 @@ end;
 procedure TDXMeshViewer.SetColors(const AValue: TDXMeshViewerColors);
 begin
     colorsValue := AValue;
+    RenderNow();
+end;
+
+procedure TDXMeshViewer.SetGradientBackground(const bValue: Boolean);
+begin
+    if bGradientBackgroundValue = bValue then
+    begin
+        Exit;
+    end;
+    bGradientBackgroundValue := bValue;
     RenderNow();
 end;
 
@@ -526,6 +542,7 @@ begin
     SetLength(selectedTrianglesValue, 0);
     selectedCountValue := 0;
     colorsValue := DXDefaultMeshViewerColors;
+    bGradientBackgroundValue := True;
     bOpenGLReadyValue := False;
     displayModeValue := mdWireframeSolid;
     bWireframeValue := False;
@@ -3431,11 +3448,65 @@ begin
     RenderNow();
 end;
 
+procedure TDXMeshViewer.DrawViewportBackground();
+var
+    previousMatrixMode: GLint;
+begin
+    if bGradientBackgroundValue = False then
+    begin
+        SetGLClearColor(colorsValue.BackgroundColor);
+        glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT);
+        Exit;
+    end;
+
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glGetIntegerv(GL_MATRIX_MODE, @previousMatrixMode);
+
+    glPushAttrib(GL_ENABLE_BIT or GL_CURRENT_BIT or GL_DEPTH_BUFFER_BIT);
+    try
+        glDisable(GL_DEPTH_TEST);
+        glDisable(GL_CULL_FACE);
+        glDisable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDepthMask(GL_FALSE);
+
+        glMatrixMode(GL_PROJECTION);
+        glPushMatrix();
+        try
+            glLoadIdentity();
+            glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+
+            glMatrixMode(GL_MODELVIEW);
+            glPushMatrix();
+            try
+                glLoadIdentity();
+                glBegin(GL_QUADS);
+                    SetGLColor(colorsValue.BackgroundBottomColor);
+                    glVertex2f(0.0, 0.0);
+                    glVertex2f(1.0, 0.0);
+                    SetGLColor(colorsValue.BackgroundTopColor);
+                    glVertex2f(1.0, 1.0);
+                    glVertex2f(0.0, 1.0);
+                glEnd();
+            finally
+                glPopMatrix();
+            end;
+        finally
+            glMatrixMode(GL_PROJECTION);
+            glPopMatrix();
+        end;
+    finally
+        glDepthMask(GL_TRUE);
+        glPopAttrib();
+        glMatrixMode(previousMatrixMode);
+    end;
+end;
+
 procedure TDXMeshViewer.RenderNow();
 begin
     if bOpenGLReadyValue = False then
     begin
-        Canvas.Brush.Color := clBlack;
+        Canvas.Brush.Color := colorsValue.BackgroundColor;
         Canvas.FillRect(ClientRect);
         Exit;
     end;
@@ -3445,7 +3516,7 @@ begin
     end;
     try
         SetupViewport();
-        glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT);
+        DrawViewportBackground();
         SetupViewTransform();
         DrawModel();
         DrawAxisIndicator();
@@ -4521,6 +4592,8 @@ end;
 initialization
 
     DXDefaultMeshViewerColors.BackgroundColor := RGB(26, 26, 31);
+    DXDefaultMeshViewerColors.BackgroundTopColor := RGB(38, 42, 54);
+    DXDefaultMeshViewerColors.BackgroundBottomColor := RGB(13, 14, 18);
     DXDefaultMeshViewerColors.SolidColorNormal := RGB(184, 184, 199);
     DXDefaultMeshViewerColors.SolidColorTwoSided := RGB(204, 204, 219);
     DXDefaultMeshViewerColors.SolidColorInvisible := RGB(153, 64, 64);
